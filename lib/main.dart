@@ -42,10 +42,10 @@ class ProfilePage extends StatelessWidget {
               
               const Card(
                 child: Column(children: [
-                  InfoTile(icon: Icons.email, label: 'Email', value: 'raka@student.ac.id'),
-                  InfoTile(icon: Icons.phone, label: 'HP', value: '0812345'),
-                  InfoTile(icon: Icons.class_, label: 'Kelas', value: 'TI-5A'),
-                  InfoTile(icon: Icons.code, label: 'GitHub', value: 'rakaerlangga'),
+                  InfoTile(icon: Icons.email, label: 'Email', value: '1124160083@global.ac.id'),
+                  InfoTile(icon: Icons.phone, label: 'HP', value: '081234567890'),
+                  InfoTile(icon: Icons.class_, label: 'Kelas', value: 'TI-SE2'),
+                  InfoTile(icon: Icons.code, label: 'GitHub', value: 'Raelcode-1o'),
                 ]),
               ),
               
@@ -53,7 +53,7 @@ class ProfilePage extends StatelessWidget {
                 child: Column(children: [
                   InfoTile(icon: Icons.computer, label: 'Skill', value: 'IT Support'),
                   InfoTile(icon: Icons.gamepad, label: 'Hobi', value: 'PC Gaming & Figure'),
-                  InfoTile(icon: Icons.person, label: 'Minat', value: 'Flutter'),
+                  InfoTile(icon: Icons.person, label: 'Minat', value: 'Programming & Networking'),
                 ]),
               ),
             ],
@@ -67,5 +67,17 @@ class ProfilePage extends StatelessWidget {
         child: const Icon(Icons.info),
       ),
     );
+  }
+}
+
+class InfoTile extends StatelessWidget {
+  final IconData icon;
+  final String label, value;
+  
+  const InfoTile({super.key, required this.icon, required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(leading: Icon(icon), title: Text(label), subtitle: Text(value));
   }
 }
