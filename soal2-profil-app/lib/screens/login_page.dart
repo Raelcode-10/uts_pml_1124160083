@@ -30,18 +30,35 @@ class _LoginPageState extends State<LoginPage> {
                 TextFormField(
                   controller: _userCtrl,
                   decoration: const InputDecoration(labelText: 'Username', border: OutlineInputBorder()),
+                  validator: (value) => value!.isEmpty ? 'Username tidak boleh kosong' : null,
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _passCtrl,
                   obscureText: true,
                   decoration: const InputDecoration(labelText: 'Password', border: OutlineInputBorder()),
+                  validator: (value) => value!.isEmpty ? 'Password tidak boleh kosong' : null,
                 ),
                 const SizedBox(height: 24),
                 // Tombol login sementara kosong
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Login'),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: _isLoading ? null : () async {
+                      if (_formKey.currentState!.validate()) {
+                        setState(() => _isLoading = true);
+                        await Future.delayed(const Duration(seconds: 2)); // Simulasi loading
+                        if (mounted) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ProfilePage()),
+                          );
+                        }
+                      }
+                    },
+                    child: _isLoading ? const CircularProgressIndicator() : const Text('Login'),
+                  ),
                 )
               ],
             ),
