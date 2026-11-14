@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soal2_profil_app/main.dart';
 import '../models/profile.dart';
 import '../widgets/info_tile.dart';
 import 'about_page.dart';
@@ -16,7 +17,21 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Profil Saya')),
+      appBar: AppBar(
+        title: const Text('Profil Saya'),
+        actions: [
+          IconButton(
+            icon: Icon(themeNotifier.value == ThemeMode.light ? Icons.dark_mode : Icons.light_mode),
+            onPressed: () {
+              setState(() {
+                themeNotifier.value = themeNotifier.value == ThemeMode.light 
+                    ? ThemeMode.dark 
+                    : ThemeMode.light;
+              });
+            },
+          )
+        ],
+      ),
       drawer: Drawer(
         child: ListView(
           children: [
