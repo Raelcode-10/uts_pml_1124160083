@@ -57,7 +57,19 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          final updatedProfile = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EditProfilePage(profile: myProfile)),
+          );
+
+          // Tangkap data dan update UI
+          if (updatedProfile != null) {
+            setState(() {
+              myProfile = updatedProfile;
+            });
+          }
+        },
         child: const Icon(Icons.edit),
       ),
     );
