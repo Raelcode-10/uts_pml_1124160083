@@ -4,6 +4,7 @@ import '../models/profile.dart';
 import '../widgets/info_tile.dart';
 import 'about_page.dart';
 import 'edit_profile_page.dart';
+import 'login_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -34,9 +35,10 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       drawer: Drawer(
         child: ListView(
+          padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
+              decoration: BoxDecoration(color: Color.fromARGB(255, 93, 93, 93)),
               child: Text('Menu Navigasi', style: TextStyle(color: Colors.white, fontSize: 24)),
             ),
             ListTile(
@@ -45,6 +47,18 @@ class _ProfilePageState extends State<ProfilePage> {
               onTap: () {
                 Navigator.pop(context); // Tutup drawer
                 Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage(profile: myProfile)));
+              },
+            ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.red),
+              title: const Text('Logout', style: TextStyle(color: Colors.red)),
+              onTap: () {
+                Navigator.pop(context); // Tutup drawer
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
               },
             ),
           ],
@@ -56,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 20),
             const CircleAvatar(
               radius: 60,
-              backgroundImage: AssetImage('assets/images/raka.png'), // Pastikan file ini ada
+              backgroundImage: AssetImage('assets/images/raka.jpg'), 
             ),
             const SizedBox(height: 16),
             Text(myProfile.nama, style: Theme.of(context).textTheme.headlineSmall),
@@ -68,6 +82,7 @@ class _ProfilePageState extends State<ProfilePage> {
             InfoTile(icon: Icons.email, label: 'Email', value: myProfile.email),
             InfoTile(icon: Icons.phone, label: 'Nomor HP', value: myProfile.noHp),
             InfoTile(icon: Icons.code, label: 'GitHub', value: myProfile.github),
+            InfoTile(icon: Icons.work, label: 'Pengalaman', value: myProfile.pengalaman.join(', ')),
           ],
         ),
       ),

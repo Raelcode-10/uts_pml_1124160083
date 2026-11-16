@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'profile_page.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
   @override
@@ -48,11 +48,24 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: _isLoading ? null : () async {
                       if (_formKey.currentState!.validate()) {
                         setState(() => _isLoading = true);
-                        await Future.delayed(const Duration(seconds: 2)); // Simulasi loading
-                        if (mounted) {
+                        await Future.delayed(const Duration(seconds: 2)); // Simulasi proses async
+
+                        if (!mounted) return;
+                        setState(() => _isLoading = false);
+
+                        // Cek kecocokan username & password
+                        if (_userCtrl.text == 'raka' && _passCtrl.text == '12345') {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => const ProfilePage()),
+                          );
+                        } else {
+                          // Tampilkan pesan jika salah
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Username atau Password salah!'),
+                              backgroundColor: Colors.red,
+                            ),
                           );
                         }
                       }

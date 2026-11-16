@@ -57,8 +57,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       // Kembalikan data baru ke halaman sebelumnya
                       Navigator.pop(context, updated);
                     }
-                  }, child: null,
-              )
+                  }, 
+                  child: const Text(
+                  'Simpan',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
             ],
           ),
         ),
