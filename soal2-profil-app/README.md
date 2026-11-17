@@ -6,6 +6,7 @@ Repo ini isinya kode sumber buat tugas UTS mata kuliah Pemrograman Mobile Lanjut
 * **Nama:** Raka Erlangga Ramadhan
 * **NIM:** 1124160083
 * **Kelas:** TI SE2 24
+* **Link Video Presentasi:** https://youtu.be/bg57cY4CklQ
 
 
 ## Apa Aja yang Dibuat di Aplikasi Ini?
